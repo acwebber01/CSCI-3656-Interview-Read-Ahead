@@ -33,13 +33,12 @@ function findNextGen(mat) # Credit to geeksforgeeks for the python version. Adap
     return nextGen
 end
 
-function runAndGenerateGIF()
+function runAndGenerateGIF(n)
     Random.seed!(42) 
     mat = rand([0, 1], 100, 100)
 
-    anim = @animate for i in 1:200
-        heatmap(mat, clim=(0, 1), color=:greys, legend=false, axis=false, 
-                title="Conway's Game of Life - Generation $i")
+    anim = @animate for i in 1:n
+        heatmap(mat, clim=(0, 1), color=:greys)
         mat = findNextGen(mat)
     end
 
